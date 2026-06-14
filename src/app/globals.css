@@ -374,64 +374,69 @@ body {
   }
 }
 
-/* Badges */
-@utility badge {
+/* Badges Base Styles */
+.badge,
+.badge-primary,
+.badge-secondary,
+.badge-accent,
+.badge-success,
+.badge-warning,
+.badge-error {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.85rem;
   font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   border-radius: 9999px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-width: 1px;
+  border: 1px solid transparent;
+  width: fit-content;
 }
 
-@utility badge-primary {
-  @extend .badge;
+.badge-primary {
   background-color: hsl(var(--primary) / 0.1);
   border-color: hsl(var(--primary) / 0.3);
-  color: hsl(var(--primary) * 1.2);
+  color: hsl(var(--primary));
 }
 
-@utility badge-secondary {
-  @extend .badge;
+.badge-secondary {
   background-color: hsl(var(--secondary) / 0.1);
   border-color: hsl(var(--secondary) / 0.3);
-  color: hsl(var(--secondary) * 1.2);
+  color: hsl(var(--secondary));
 }
 
-@utility badge-accent {
-  @extend .badge;
+.badge-accent {
   background-color: hsl(var(--accent) / 0.1);
   border-color: hsl(var(--accent) / 0.3);
-  color: hsl(var(--accent) * 1.2);
+  color: hsl(var(--accent));
 }
 
-@utility badge-success {
-  @extend .badge;
+.badge-success {
   background-color: hsl(var(--success) / 0.1);
   border-color: hsl(var(--success) / 0.3);
-  color: hsl(var(--success) * 1.2);
+  color: hsl(var(--success));
 }
 
-@utility badge-warning {
-  @extend .badge;
+.badge-warning {
   background-color: hsl(var(--warning) / 0.1);
   border-color: hsl(var(--warning) / 0.3);
-  color: hsl(var(--warning) * 1.2);
+  color: hsl(var(--warning));
 }
 
-@utility badge-error {
-  @extend .badge;
+.badge-error {
   background-color: hsl(var(--error) / 0.1);
   border-color: hsl(var(--error) / 0.3);
-  color: hsl(var(--error) * 1.2);
+  color: hsl(var(--error));
 }
 
-/* Alerts */
-@utility alert {
+/* Alerts Base Styles */
+.alert,
+.alert-success,
+.alert-warning,
+.alert-error,
+.alert-info {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -439,38 +444,35 @@ body {
   border-radius: 0.5rem;
   border-left-width: 4px;
   font-size: 0.9rem;
+  width: 100%;
 }
 
-@utility alert-success {
-  @extend .alert;
+.alert-success {
   background-color: hsl(var(--success) / 0.05);
   border: 1px solid hsl(var(--success) / 0.2);
   border-left: 4px solid hsl(var(--success));
-  color: hsl(var(--success) * 1.3);
+  color: hsl(var(--success));
 }
 
-@utility alert-warning {
-  @extend .alert;
+.alert-warning {
   background-color: hsl(var(--warning) / 0.05);
   border: 1px solid hsl(var(--warning) / 0.2);
   border-left: 4px solid hsl(var(--warning));
-  color: hsl(var(--warning) * 1.3);
+  color: hsl(var(--warning));
 }
 
-@utility alert-error {
-  @extend .alert;
+.alert-error {
   background-color: hsl(var(--error) / 0.05);
   border: 1px solid hsl(var(--error) / 0.2);
   border-left: 4px solid hsl(var(--error));
-  color: hsl(var(--error) * 1.3);
+  color: hsl(var(--error));
 }
 
-@utility alert-info {
-  @extend .alert;
+.alert-info {
   background-color: hsl(var(--info) / 0.05);
   border: 1px solid hsl(var(--info) / 0.2);
   border-left: 4px solid hsl(var(--info));
-  color: hsl(var(--info) * 1.3);
+  color: hsl(var(--info));
 }
 
 /* Modals */
