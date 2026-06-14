@@ -22,7 +22,7 @@ export default function Home() {
       "https://www.facebook.com/share/18qmjx8Hhs/",
       "https://x.com/adcoraai",
       "https://www.instagram.com/adcoraai",
-      "https://linkedin.com/company/adcoraai"
+      "https://www.linkedin.com/in/adcora-ai-498645416"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
