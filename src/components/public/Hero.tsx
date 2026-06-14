@@ -302,8 +302,8 @@ export default function Hero() {
               <svg className="w-full h-full">
                 {serviceNodes.map((node, i) => {
                   const theta = (i * 2 * Math.PI) / serviceNodes.length;
-                  const x = 145 * Math.cos(theta) + 200;
-                  const y = 145 * Math.sin(theta) + 200;
+                  const x = parseFloat((145 * Math.cos(theta) + 200).toFixed(2));
+                  const y = parseFloat((145 * Math.sin(theta) + 200).toFixed(2));
                   return (
                     <React.Fragment key={i}>
                       {/* Connection trace */}
@@ -348,8 +348,8 @@ export default function Hero() {
             >
               {serviceNodes.map((node, i) => {
                 const theta = (i * 2 * Math.PI) / serviceNodes.length;
-                const x = 145 * Math.cos(theta) + 200 - 24;
-                const y = 145 * Math.sin(theta) + 200 - 24;
+                const x = parseFloat((145 * Math.cos(theta) + 200 - 24).toFixed(2));
+                const y = parseFloat((145 * Math.sin(theta) + 200 - 24).toFixed(2));
 
                 return (
                   <div key={i} className="absolute" style={{ left: x, top: y }}>

@@ -98,10 +98,6 @@ export default function PortfolioPreview() {
         {/* Dynamic Grid */}
         <motion.div
           layout
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[400px]"
         >
           <AnimatePresence mode="popLayout">
@@ -109,8 +105,10 @@ export default function PortfolioPreview() {
               <motion.div
                 key={project.title}
                 layout
-                variants={staggerItem}
-                exit={{ opacity: 0, scale: 0.93, y: -10 }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{
                   y: -6,
                   scale: 1.02,

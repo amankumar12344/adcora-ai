@@ -21,6 +21,12 @@ interface Particle {
 }
 
 export default function FloatingParticles({ count = 12, className = "" }: FloatingParticlesProps) {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const colors = [
     "rgba(139,92,246,0.4)",
     "rgba(14,165,233,0.4)",
@@ -48,6 +54,8 @@ export default function FloatingParticles({ count = 12, className = "" }: Floati
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count]);
+
+  if (!mounted) return null;
 
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
