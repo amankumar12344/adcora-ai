@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface UseCountUpOptions {
   end: number;
@@ -21,47 +21,40 @@ export function useCountUp({
 }: UseCountUpOptions) {
   const [count, setCount] = useState(start);
   const [hasStarted, setHasStarted] = useState(false);
-  const [node, setNode] = useState<HTMLSpanElement | null>(null);
-
-  // Use a callback ref to ensure we get the DOM node as soon as it mounts/hydrates.
-  const ref = useCallback((element: HTMLSpanElement | null) => {
-    if (element !== null) {
-      setNode(element);
-    }
-  }, []);
+  const elementRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (hasStarted) return;
-    if (!node) return;
+    const el = elementRef.current;
+    if (!el) return;
 
-    // rootMargin: "0px 0px -10% 0px" gives a comfortable trigger zone.
-    // threshold: 0 means fire as soon as even 1 pixel is visible (important
-    // when the element starts with a CSS transform/opacity from Framer Motion).
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setHasStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
-    );
+    let observer: IntersectionObserver | null = null;
 
-    observer.observe(node);
+    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            setHasStarted(true);
+            observer?.disconnect();
+          }
+        },
+        { threshold: 0, rootMargin: "0px 0px -5% 0px" }
+      );
+      observer.observe(el);
+    } else {
+      setHasStarted(true);
+    }
 
-    // Fallback: if the element is already on screen (e.g., Hero stats visible on
-    // page load) but IntersectionObserver missed it due to Framer Motion's
-    // initial opacity/transform state, force-start the animation after 1.5s.
+    // Fallback: If visible on screen or missed by the observer, start after 800ms
     const fallback = setTimeout(() => {
       setHasStarted(true);
-      observer.disconnect();
-    }, 1500);
+      observer?.disconnect();
+    }, 800);
 
     return () => {
-      observer.disconnect();
+      observer?.disconnect();
       clearTimeout(fallback);
     };
-  }, [node, hasStarted]);
+  }, [start]);
 
   useEffect(() => {
     if (!hasStarted) return;
@@ -78,24 +71,25 @@ export function useCountUp({
       const easedProgress = easeOutQuad(progress);
       const current = start + range * easedProgress;
 
-      setCount(parseFloat(current.toFixed(decimals)));
+      setCount(current);
 
       if (progress < 1) {
         animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
       }
     };
 
     animationFrameId = requestAnimationFrame(animate);
 
-    // Cancel animation frame on cleanup to prevent concurrent animation loops or memory leaks.
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [hasStarted, end, start, duration, decimals]);
+  }, [hasStarted, end, start, duration]);
 
   const formatted = `${prefix}${count.toFixed(decimals)}${suffix}`;
 
-  return { count, formatted, ref };
+  return { count, formatted, ref: elementRef };
 }
