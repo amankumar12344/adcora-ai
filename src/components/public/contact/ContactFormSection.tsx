@@ -250,7 +250,9 @@ Notes/Focus: ${schedulerForm.notes || "None provided"}`,
                   +91 91537 65913
                 </a>
                 <a
-                  href="tel:+918360607130"
+                  href="https://wa.me/918360607130?text=Hi%20AdcoraAI,%20I'd%20like%20to%20discuss%20a%20project."
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors block"
                 >
                   +91 83606 07130
