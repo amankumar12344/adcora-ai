@@ -127,6 +127,12 @@ export default function ContactPreview() {
                     >
                       <span>+91 91537 65913</span>
                     </a>
+                    <a
+                      href="tel:+918360607130"
+                      className="text-sm font-semibold text-emerald-400 hover:underline flex items-center gap-1.5"
+                    >
+                      <span>+91 83606 07130</span>
+                    </a>
                   </div>
                 </motion.div>
 

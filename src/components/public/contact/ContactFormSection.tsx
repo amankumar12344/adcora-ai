@@ -249,6 +249,12 @@ Notes/Focus: ${schedulerForm.notes || "None provided"}`,
                 >
                   +91 91537 65913
                 </a>
+                <a
+                  href="tel:+918360607130"
+                  className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors block"
+                >
+                  +91 83606 07130
+                </a>
                 <span className="text-[0.65rem] text-muted-foreground block">Available 9:00 - 18:00 UTC</span>
               </div>
             </div>

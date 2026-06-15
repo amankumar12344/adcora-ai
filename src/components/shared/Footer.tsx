@@ -78,6 +78,10 @@ export default function Footer() {
               <a href="https://wa.me/919153765913?text=Hi%20AdcoraAI" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
                 +91 91537 65913
               </a>
+              <span className="text-muted">/</span>
+              <a href="tel:+918360607130" className="hover:text-white transition-colors">
+                +91 83606 07130
+              </a>
             </div>
           </div>
           
