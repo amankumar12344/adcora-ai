@@ -1,18 +1,6 @@
 {
   "framework": "nextjs",
   "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.adcoraai.com"
-        }
-      ],
-      "destination": "https://adcoraai.com/:path*",
-      "permanent": true
-    }
-  ]
+  "outputDirectory": ".next"
 }
+
