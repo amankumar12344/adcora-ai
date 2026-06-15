@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ChatbotWidget from "@/components/public/ChatbotWidget";
+import Preloader from "@/components/public/Preloader";
 
 export const metadata: Metadata = {
   title: "AdcoraAI | Building the Future with AI & Digital Excellence",
@@ -46,6 +47,7 @@ export default function RootLayout({
       style={{ scrollBehavior: "smooth" }}
     >
       <body className="font-sans antialiased text-foreground bg-background min-h-screen flex flex-col">
+        <Preloader />
         {children}
         <ChatbotWidget />
       </body>
