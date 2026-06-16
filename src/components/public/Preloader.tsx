@@ -3,7 +3,15 @@
 import React, { useState, useEffect } from "react";
 
 export default function Preloader() {
-  const [state, setState] = useState<"loading" | "fading" | "none">("loading");
+  const [state, setState] = useState<"loading" | "fading" | "none">(() => {
+    if (typeof window !== "undefined") {
+      const hasBeenShown = sessionStorage.getItem("adcora-preloader-shown");
+      if (hasBeenShown === "true") {
+        return "none";
+      }
+    }
+    return "loading";
+  });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
@@ -45,16 +53,7 @@ export default function Preloader() {
     };
   }, []);
 
-  useEffect(() => {
-    if (state !== "none") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [state]);
+
 
   if (state === "none") return null;
 
