@@ -22,8 +22,16 @@ export default function Home() {
       "https://www.facebook.com/share/18qmjx8Hhs/",
       "https://x.com/adcoraai",
       "https://www.instagram.com/adcoraai",
-      "https://www.linkedin.com/in/adcora-ai-498645416"
+      "https://www.linkedin.com/in/aman-kumar-566403205"
     ],
+    "founder": {
+      "@type": "Person",
+      "name": "Aman Kumar",
+      "jobTitle": "Co-Founder, CEO & CTO",
+      "sameAs": [
+        "https://www.linkedin.com/in/aman-kumar-566403205"
+      ]
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-91537-65913",
